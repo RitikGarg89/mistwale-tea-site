@@ -1,0 +1,1891 @@
+<html>
+
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style>
+    :root {
+      --tea-green: #1f3d2b;
+      --leaf: #4f7942;
+      --cream: #f6f1e7;
+      --parchment: #ebe2cf;
+      --saffron: #d9962b;
+      --ink: #1b1b1b;
+      --error: #b3261e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--saffron);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--ink);
+      background: var(--cream);
+      text-align: center;
+    }
+
+    input, select, textarea, button {
+      font-family: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      margin: 0 0 16px;
+    }
+
+    h1 { font-size: clamp(40px, 5vw, 64px); }
+    h2 { font-size: clamp(28px, 4vw, 40px); }
+    h3 { font-size: clamp(20px, 3vw, 24px); }
+    .small-text, .desc, .legal { font-size: 14px; }
+
+    .wrapper {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* announcement */
+    .announcement {
+      padding: 7px 16px;
+      background: var(--tea-green);
+      color: var(--cream);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+
+    /* header */
+    .header {
+      background: var(--cream);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--parchment);
+      position: relative;
+    }
+
+    .header .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header img {
+      height: 32px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+    
+    .nav a:hover {
+      color: var(--tea-green);
+    }
+
+    .search {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--parchment);
+      width: 160px;
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .cart-icon {
+      color: var(--ink);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    #cart-count {
+      background: var(--error);
+      color: var(--cream);
+      border-radius: 12px;
+      font-size: 12px;
+      padding: 2px 6px;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      line-height: 1;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--cream);
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 1px solid var(--parchment);
+        z-index: 40;
+      }
+      .nav.open {
+        display: flex;
+      }
+      .nav a {
+        padding: 16px;
+        border-top: 1px solid var(--parchment);
+        text-align: left;
+      }
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(to right, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.1) 60%), url(images/hero-banner.png) center/cover no-repeat;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      padding: 64px 16px;
+    }
+
+    .hero-content {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 769px) {
+      .hero-content {
+        margin-left: 5%;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 5vw, 64px);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: var(--cream);
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    /* trust strip */
+    .trust-strip {
+      background: var(--parchment);
+      padding: 32px 16px;
+    }
+
+    .trust-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-evenly;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--tea-green);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--tea-green);
+      color: var(--cream);
+      padding: 12px 24px;
+      min-height: 44px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      border: 2px solid transparent;
+      transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--leaf);
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn[disabled], .btn[style*="not-allowed"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    .btn.secondary {
+      background: transparent;
+      color: var(--tea-green);
+      border: 2px solid var(--tea-green);
+    }
+    
+    .btn.secondary:hover {
+      background: var(--tea-green);
+      color: var(--cream);
+    }
+
+    /* sections */
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--tea-green);
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    /* collection section */
+    .collection-section {
+      padding: 80px 16px;
+    }
+
+    .collection-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    @media (min-width: 769px) {
+      .collection-header {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      .collection-title-area {
+        flex: 1;
+      }
+      .collection-desc {
+        flex: 0 0 35%;
+        font-size: 16px;
+        color: var(--ink);
+        opacity: 0.8;
+      }
+    }
+
+    .collection-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .collection-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--tea-green);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .collection-toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    @media (min-width: 769px) {
+      .collection-toolbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter {
+      display: inline-block;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--parchment);
+      border-radius: 24px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter:hover {
+      border-color: var(--tea-green);
+    }
+
+    .filter.active {
+      background: var(--tea-green);
+      color: var(--cream);
+      border-color: var(--tea-green);
+    }
+
+    .toolbar-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-controls select {
+      padding: 10px 16px;
+      border-radius: 24px;
+      border: 1px solid var(--parchment);
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--parchment);
+      border-radius: 24px;
+      padding: 0 16px;
+      background: var(--cream);
+    }
+
+    .search-box svg {
+      color: var(--leaf);
+      margin-right: 8px;
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      padding: 10px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      width: 140px;
+    }
+
+    /* products */
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 64px 24px;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 300px;
+      background: transparent;
+      position: relative;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      background: var(--parchment);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .card.sold-out .image-wrapper img {
+      opacity: 0.4;
+      filter: grayscale(100%);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    
+    .card:hover .image-wrapper img {
+      transform: scale(1.05);
+    }
+    
+    .badge-num {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 10;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      letter-spacing: 0.5px;
+    }
+    
+    .quickview-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(31, 61, 43, 0.9);
+      color: var(--cream);
+      padding: 16px 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      z-index: 15;
+    }
+    
+    .card:hover .quickview-overlay {
+      transform: translateY(0);
+    }
+
+    .category-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .card h5 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: var(--tea-green);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card .stars {
+      color: var(--saffron);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .card .desc {
+      font-size: 15px;
+      color: var(--ink);
+      opacity: 0.8;
+      margin-bottom: 24px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .card .price {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    
+    .card .add-btn {
+      width: 100%;
+    }
+
+    .heart {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: var(--cream);
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.2s ease, fill 0.2s ease, transform 0.2s ease;
+      z-index: 10;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+    }
+    
+    .heart:hover {
+      transform: scale(1.1);
+    }
+
+    .heart.liked {
+      color: var(--error);
+      fill: var(--error);
+    }
+
+    .badge-oos {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    /* quick view */
+    #quickview {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--cream);
+      padding: 48px;
+      border-radius: 4px;
+      z-index: 50;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    }
+
+    #quickview .close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      cursor: pointer;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--tea-green);
+      background: transparent;
+      border: none;
+    }
+    
+    .qv-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .qv-image {
+      flex: 1;
+    }
+    
+    .qv-image img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    
+    .qv-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    
+    .qv-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    
+    .qv-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--tea-green);
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    
+    .qv-desc {
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.6;
+      opacity: 0.8;
+      margin-bottom: 32px;
+    }
+    
+    .qv-price {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    
+    .qv-qty-controls {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--parchment);
+      border-radius: 4px;
+      height: 44px;
+    }
+
+    .qv-qty-btn {
+      width: 44px;
+      height: 100%;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .qv-qty-btn:hover:not([disabled]) {
+      background-color: var(--parchment);
+    }
+    
+    .qv-qty-btn[disabled] {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .qv-qty-val {
+      padding: 0 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      min-width: 44px;
+      text-align: center;
+    }
+    
+    .qv-action-area {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    @media (min-width: 769px) {
+      .qv-layout {
+        flex-direction: row;
+        gap: 48px;
+      }
+    }
+
+    /* cart drawer */
+    #cart {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      background: var(--cream);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      padding: 24px 16px;
+      z-index: 60;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @media (min-width: 769px) {
+      #cart {
+        max-width: 540px; /* noticeably wider on desktop */
+        right: -580px;
+        padding: 40px;
+      }
+    }
+
+    .cart-eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .cart-line {
+      border-bottom: 1px solid var(--parchment);
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 480px) {
+      .cart-line {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-cat {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 4px;
+    }
+    .cart-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--ink);
+      margin: 0 0 4px;
+    }
+    .cart-item-price {
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .cart-item-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    @media (min-width: 480px) {
+      .cart-item-actions {
+        align-items: flex-end;
+      }
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--parchment);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .qty-controls span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .qty-controls span.qty {
+      cursor: default;
+      font-size: 14px;
+      font-weight: 500;
+      border-left: 1px solid var(--parchment);
+      border-right: 1px solid var(--parchment);
+    }
+    
+    .remove {
+      font-size: 13px;
+      color: var(--ink);
+      text-decoration: underline;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .remove:hover {
+      opacity: 1;
+    }
+
+    .ship-wrapper {
+      background: rgba(246, 241, 231, 0.5);
+      border: 1px solid var(--parchment);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      margin-top: 24px;
+    }
+
+    #ship-msg {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .ship-bar {
+      background: #fff;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--parchment);
+    }
+
+    .ship-fill {
+      background: var(--leaf);
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .cart-totals-section {
+      border-top: 1px solid var(--parchment);
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .totals-row.final {
+      font-size: 20px;
+      font-weight: 600;
+      border-top: 1px solid var(--parchment);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+    .totals-row.discount {
+      color: var(--leaf);
+    }
+
+    /* sections: pincode, reviews, faq, newsletter */
+    .pincode, .reviews, .faq, .newsletter {
+      padding: 80px 16px;
+      text-align: center;
+    }
+
+    .pincode input, .newsletter input {
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--parchment);
+      background: var(--cream);
+      color: var(--ink);
+      width: 100%;
+      max-width: 300px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .review-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .review {
+      flex: 1 1 300px;
+      max-width: 400px;
+      padding: 32px;
+      background: var(--cream);
+      border: 1px solid var(--parchment);
+      border-radius: 8px;
+      text-align: left;
+      font-style: italic;
+      color: var(--ink);
+    }
+    
+    .review b {
+      display: block;
+      margin-top: 16px;
+      font-style: normal;
+      color: var(--tea-green);
+    }
+
+    .faq-item {
+      max-width: 600px;
+      margin: 0 auto 16px;
+      text-align: left;
+      border: 1px solid var(--parchment);
+      border-radius: 8px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 16px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--tea-green);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+    }
+    
+    .faq-question:hover {
+      background: var(--parchment);
+    }
+
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 24px 24px;
+      max-height: 200px;
+    }
+
+    .newsletter {
+      background: var(--tea-green);
+      color: var(--cream);
+      padding: 80px 16px;
+      text-align: left;
+    }
+
+    .newsletter .wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nl-content {
+      flex: 1;
+    }
+    
+    .nl-eyebrow {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .nl-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .nl-content p {
+      font-size: 16px;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .nl-form-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .nl-form-wrapper label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      color: var(--cream);
+    }
+
+    .nl-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nl-input-group input {
+      padding: 14px 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(246, 241, 231, 0.3);
+      background: transparent;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      width: 100%;
+    }
+    
+    .nl-input-group input::placeholder {
+      color: rgba(246, 241, 231, 0.5);
+    }
+    
+    .nl-input-group input:focus {
+      outline: none;
+      border-color: var(--cream);
+    }
+
+    .nl-input-group button {
+      background: var(--cream);
+      color: var(--tea-green);
+      border: none;
+      padding: 14px 24px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .nl-input-group button:hover {
+      opacity: 0.9;
+    }
+
+    @media (min-width: 769px) {
+      .newsletter .wrapper {
+        flex-direction: row;
+        align-items: center;
+        gap: 64px;
+      }
+      .nl-input-group {
+        flex-direction: row;
+      }
+      .nl-input-group button {
+        width: auto;
+      }
+    }
+
+    /* footer */
+    .footer {
+      background: #14281c; /* Darker shade of tea-green (#1f3d2b) */
+      color: var(--cream);
+      padding: 80px 16px 40px;
+    }
+
+    .footer .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    
+    @media (min-width: 769px) {
+      .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-brand {
+      flex: 1;
+      max-width: 320px;
+    }
+
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 24px;
+      filter: brightness(0) invert(1) opacity(0.9);
+      display: block;
+    }
+    
+    .footer-brand .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      line-height: 1.4;
+      opacity: 0.9;
+      color: var(--cream);
+    }
+
+    .footer-links-group {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      flex: 2;
+    }
+
+    @media (min-width: 769px) {
+      .footer-links-group {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 80px;
+      }
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-nav h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--leaf);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .footer-nav a,
+    .footer-nav span {
+      color: rgba(246, 241, 231, 0.8);
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.6;
+    }
+    
+    .footer-nav svg {
+      margin-top: 2px;
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+    
+    .footer-nav a:hover {
+      color: var(--cream);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(246, 241, 231, 0.15);
+      font-size: 13px;
+      opacity: 0.7;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 769px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 48px;
+      }
+    }
+
+    .legal {
+      margin: 0;
+      color: rgba(246, 241, 231, 0.7); /* Cream tinted */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    Free shipping on eligible orders &middot; Use code WELCOME10 for 10% off
+  </div>
+
+  <div class="header">
+    <div class="wrapper">
+      <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('nav-menu').classList.toggle('open')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Mistvale Tea Co.">
+      </a>
+      <div class="nav" id="nav-menu">
+        <a href="#">Shop</a>
+        <a href="#">Our approach</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="cart-icon" onclick="openCart()" aria-label="Cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span id="cart-count">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="wrapper hero-content">
+      <h1 class="hero-title">Hill-grown tea,<br>honestly made.</h1>
+      <p>Discover our selection of premium, hand-picked teas crafted for your quiet morning ritual.</p>
+      <button class="btn" onclick="document.getElementById('shop').scrollIntoView()">Shop the teas</button>
+    </div>
+  </div>
+
+  <div class="trust-strip">
+    <div class="wrapper trust-grid">
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>Honestly made in Siliguri</span>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>Delivery in 2-5 days</span>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <span>Easy 7-day returns</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper collection-section" id="shop">
+    <div class="collection-header">
+      <div class="collection-title-area">
+        <div class="collection-label">Our Collection</div>
+        <h2 class="collection-title">Shop the teas</h2>
+      </div>
+      <div class="collection-desc">
+        Explore our curated selection of whole-leaf teas, carefully sourced and honestly made.
+      </div>
+    </div>
+    
+    <div class="collection-toolbar">
+      <div class="filters">
+        <div class="filter active" onclick="filterProducts('all', this)">All</div>
+        <div class="filter" onclick="filterProducts('Black', this)">Black</div>
+        <div class="filter" onclick="filterProducts('Green', this)">Green</div>
+        <div class="filter" onclick="filterProducts('Herbal', this)">Herbal</div>
+        <div class="filter" onclick="filterProducts('Gifts', this)">Gifts</div>
+      </div>
+      <div class="toolbar-controls">
+        <select id="sort" onchange="sortProducts()" aria-label="Sort products">
+          <option value="default">Sort</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="name-az">Name: A-Z</option>
+          <option value="name-za">Name: Z-A</option>
+        </select>
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input class="search" id="search" placeholder="Search teas..." aria-label="Search teas">
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div id="quickview">
+    <div class="close" onclick="document.getElementById('quickview').style.display='none'">&times;</div>
+    <div id="qv-body"></div>
+  </div>
+
+  <div id="cart">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+      <div>
+        <div class="cart-eyebrow">Your Selection</div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; color: var(--ink);">Shopping bag</h2>
+      </div>
+      <div style="cursor:pointer; font-size: 28px; line-height: 1; padding: 4px; opacity: 0.6; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6" onclick="closeCart()">&times;</div>
+    </div>
+    
+    <div id="cart-content-wrapper">
+      <div class="ship-wrapper" id="ship-wrapper">
+        <div id="ship-msg"></div>
+        <div class="ship-bar">
+          <div class="ship-fill" id="ship-fill"></div>
+        </div>
+      </div>
+
+      <div id="cart-items"></div>
+      
+      <div id="cart-footer">
+        <div style="margin-top: 24px;">
+          <div style="display: flex; gap: 8px;">
+            <input id="coupon" placeholder="Coupon code" aria-label="Coupon code" style="flex: 1; padding: 12px 16px; border-radius: 4px; border: 1px solid var(--parchment); background: transparent; font-family: 'Inter', sans-serif; font-size: 14px;">
+            <button class="btn secondary" style="white-space: nowrap; padding: 12px 24px;" onclick="applyCoupon()">Apply</button>
+          </div>
+        </div>
+        
+        <div id="totals"></div>
+        <div style="margin-top: 24px;">
+          <button class="btn" style="width: 100%; font-size: 16px; padding: 16px;" onclick="alert('Order placed!!')">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout contract: the backend reads this form. Do not rename it or its fields. -->
+  <form id="checkout-form" action="https://mistvale.example/cart/checkout" method="POST" style="display:none">
+    <input type="hidden" name="items">
+    <input type="hidden" name="coupon">
+  </form>
+
+  <div class="wrapper pincode">
+    <h2 class="section-title">Check delivery</h2>
+    <div style="display: flex; justify-content: center; gap: 8px;">
+      <input id="pin" placeholder="Enter 6-digit pincode" aria-label="Enter pincode">
+      <button class="btn secondary" onclick="checkPin()">Check</button>
+    </div>
+    <div id="pin-result" style="margin-top: 16px;"></div>
+  </div>
+
+  <div class="wrapper reviews">
+    <h2 class="section-title">What our customers say</h2>
+    <div class="review-grid">
+      <div class="review">"Best masala chai I have ever had. Tastes like my nani's kitchen." <b>- Ananya, Pune</b></div>
+      <div class="review">"The Darjeeling first flush is so fresh. Packaging was lovely too." <b>- Rohit, Bengaluru</b></div>
+      <div class="review">"Bought the sampler as a gift and now my whole family is hooked." <b>- Meera, Kochi</b></div>
+    </div>
+  </div>
+
+  <div class="wrapper faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">How long does delivery take? <span>+</span></button>
+      <div class="faq-answer">2 to 5 working days depending on your pincode. Use the delivery check to see yours.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">Can I return tea? <span>+</span></button>
+      <div class="faq-answer">Unopened packs can be returned within 7 days of delivery. Opened tea cannot be returned for hygiene reasons.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">How should I store my tea? <span>+</span></button>
+      <div class="faq-answer">In an airtight container, away from light, heat and strong smells. It tastes best within 6 months of opening.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">Is Chamomile & Tulsi caffeine-free? <span>+</span></button>
+      <div class="faq-answer">Yes, it is a caffeine-free herbal blend.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">Do you ship outside India? <span>+</span></button>
+      <div class="faq-answer">Not yet. We currently deliver within India only.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <button class="faq-question">Can I send tea as a gift? <span>+</span></button>
+      <div class="faq-answer">Yes. The Tea Lover's Sampler comes in a wooden gift box with a brewing guide.</div>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <div class="wrapper">
+      <div class="nl-content">
+        <div class="nl-eyebrow">Stay Connected</div>
+        <h2>Join the Mistvale community</h2>
+        <p>Sign up to receive news from our estates and updates on new harvests.</p>
+      </div>
+      <div class="nl-form-wrapper">
+        <label for="nl-email">Email address</label>
+        <div class="nl-input-group">
+          <input id="nl-email" placeholder="you@example.com" aria-label="Email address">
+          <button onclick="subscribe()">Subscribe</button>
+        </div>
+        <div id="nl-msg" style="margin-top: 12px; font-size: 14px; color: var(--cream);"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="wrapper">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Mistvale Tea Co." class="footer-logo">
+          <div class="tagline">Hill-grown tea, honestly made.</div>
+        </div>
+        <div class="footer-links-group">
+          <div class="footer-nav">
+            <h4>Shop & Learn</h4>
+            <a href="#">Shop</a>
+            <a href="#">Our approach</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div class="footer-nav">
+            <h4>Company & contact</h4>
+            <span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              14 Hill Cart Road, Siliguri,<br>West Bengal 734001, India
+            </span>
+            <a href="mailto:hello@mistvale.example">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              hello@mistvale.example
+            </a>
+            <a href="tel:+919000012345">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +91 90000 12345
+            </a>
+            <a href="https://mistvale.example" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              mistvale.example
+            </a>
+            <a href="https://instagram.com/mistvale.example" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <!-- LEGAL: approved wording, do not edit (ref MV-LGL-07) -->
+        <p class="legal">All prices are inclusive of GST. Returns are accepted within 7 days of delivery on unopened packs
+          only; opened tea cannot be returned for hygiene reasons. Tea colour and flavour may vary slightly between
+          harvests.</p>
+        <p class="legal" style="flex-shrink: 0;">&copy; 2020 MistVale. All right reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // product data - comes from backend, DO NOT CHANGE ids, names or prices
+    const PRODUCTS = [
+      { id: 101, name: "Assam Breakfast Black Tea", category: "Black", price: 349, stock: 40, image: "images/p101.png", desc: "Strong, malty CTC tea from Upper Assam estates. Perfect with milk and a little sugar in the morning." },
+      { id: 102, name: "Darjeeling First Flush", category: "Black", price: 1299, stock: 12, image: "images/p102.png", desc: "Delicate, floral spring harvest leaves with a muscatel note. Best without milk.", rating: 4.8, reviews: 128 },
+      { id: 103, name: "Kashmiri Kahwa", category: "Green", price: 549, stock: 25, image: "images/p103.png", desc: "Green tea with saffron, cardamom, cinnamon and almond flakes." },
+      { id: 104, name: "Masala Chai Blend", category: "Black", price: 399, stock: 60, image: "images/p104.png", desc: "Bold Assam leaves with ginger, cardamom, clove and black pepper. Our bestseller.", rating: 4.7, reviews: 342 },
+      { id: 105, name: "Nilgiri Green Tea", category: "Green", price: 449, stock: 30, image: "images/p105.png", desc: "Smooth, grassy green tea from the Blue Mountains of the south." },
+      { id: 106, name: "Chamomile & Tulsi", category: "Herbal", price: 499, stock: 18, image: "images/p106.png", desc: "Caffeine-free calming blend of chamomile flowers and holy basil." },
+      { id: 107, name: "Hibiscus Rose Infusion", category: "Herbal", price: 599, stock: 0, image: "images/p107.png", desc: "Tangy hibiscus with rose petals. Lovely iced." },
+      { id: 108, name: "Tea Lover's Sampler Gift Box", category: "Gifts", price: 1899, stock: 9, image: "images/p108.png", desc: "Six of our favourite teas in a wooden gift box with a brewing guide." }
+    ];
+
+    // ---- API START: simulated store backend. DO NOT CHANGE this block. ----
+    const API = {
+      // Searches names and descriptions. Returns a Promise of matching product ids.
+      // Like a real server, response time varies with the query.
+      search: function (query) {
+        const q = String(query).trim().toLowerCase();
+        const delay = Math.max(120, 900 - q.length * 140);
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve(PRODUCTS.filter(function (p) {
+              return p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+            }).map(function (p) { return p.id; }));
+          }, delay);
+        });
+      },
+      // Delivery estimate for an Indian pincode. Resolves { serviceable, days }.
+      // Rejects with Error('INVALID_PINCODE') for anything that is not a valid 6-digit pincode.
+      checkPincode: function (pin) {
+        const zones = { '73': 2, '70': 3, '71': 3, '11': 4, '40': 4, '56': 5, '60': 5, '50': 5 };
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            if (!/^[1-9][0-9]{5}$/.test(String(pin))) return reject(new Error('INVALID_PINCODE'));
+            const days = zones[String(pin).slice(0, 2)];
+            resolve(days ? { serviceable: true, days: days } : { serviceable: false });
+          }, 400 + Math.random() * 600);
+        });
+      }
+    };
+    // ---- API END ----
+
+    var cart = JSON.parse(localStorage.getItem('mv_cart')) || [];
+    var discount = 0;
+    var appliedCoupon = '';
+    var shown = PRODUCTS;
+    var activeCategory = 'all';
+    var searchQuery = '';
+
+    function applyFilters(ids) {
+      shown = PRODUCTS.filter(function (p) {
+        var matchCat = activeCategory === 'all' || p.category === activeCategory;
+        var matchSearch = ids === null || ids.indexOf(p.id) !== -1;
+        return matchCat && matchSearch;
+      });
+      renderProducts(shown);
+    }
+
+    console.log('page loaded');
+
+    function renderProducts(list) {
+      var html = '';
+      for (var i = 0; i < list.length; i++) {
+        var p = list[i];
+        var cardClass = p.stock === 0 ? 'card sold-out' : 'card';
+        var indexNum = String(i + 1).padStart(2, '0');
+        html += '<div class="' + cardClass + '">';
+        html += '<div class="image-wrapper">';
+        html += '<span class="badge-num">No. ' + indexNum + '</span>';
+        if (p.stock == 0) {
+          html += '<span class="badge-oos">Sold out</span>';
+        }
+        html += '<svg class="heart" onclick="toggleWish(this)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
+        html += '<img src="' + p.image + '" alt="' + p.name + '">';
+        html += '<button class="quickview-overlay" data-index="' + i + '">Quick view</button>';
+        html += '</div>';
+        html += '<div class="category-label">' + p.category + '</div>';
+        html += '<h5>' + p.name + '</h5>';
+        if (p.rating) {
+          html += '<div class="stars">★★★★★ (' + p.reviews + ')</div>';
+        }
+        html += '<div class="desc">' + p.desc + '</div>';
+        html += '<div class="price" id="price-' + p.id + '">₹' + p.price.toLocaleString('en-IN') + '</div>';
+        if (p.stock == 0) {
+          html += '<button class="btn secondary add-btn" onclick="alert(\'You will be notified when this is back in stock.\')">Notify me</button>';
+        } else {
+          html += '<button class="btn add-btn" onclick="addToCart(\'' + p.id + '\')">Add to bag</button>';
+        }
+        html += '</div>';
+      }
+      document.getElementById('grid').innerHTML = html;
+
+      var qvButtons = document.getElementsByClassName('quickview-overlay');
+      for (var i = 0; i < qvButtons.length; i++) {
+        qvButtons[i].onclick = (function(idx) {
+          return function () {
+            openQuickView(list[idx]);
+          };
+        })(i);
+      }
+    }
+
+    function filterProducts(cat, el) {
+      $('.filter').removeClass('active');
+      $(el).addClass('active');
+      activeCategory = cat;
+      if (searchQuery.trim() === '') {
+        applyFilters(null);
+      } else {
+        API.search(searchQuery).then(function (ids) { applyFilters(ids); });
+      }
+    }
+
+    function sortProducts() {
+      var v = document.getElementById('sort').value;
+      if (v == 'low') shown.sort(function (a, b) { return a.price - b.price; });
+      if (v == 'high') shown.sort(function (a, b) { return b.price - a.price; });
+      if (v == 'name-az') shown.sort(function (a, b) { return a.name > b.name ? 1 : a.name < b.name ? -1 : 0; });
+      if (v == 'name-za') shown.sort(function (a, b) { return a.name < b.name ? 1 : a.name > b.name ? -1 : 0; });
+      renderProducts(shown);
+    }
+
+    var searchTimer;
+    document.getElementById('search').onkeyup = function () {
+      searchQuery = this.value;
+      clearTimeout(searchTimer);
+      if (searchQuery.trim() === '') {
+        applyFilters(null);
+      } else {
+        searchTimer = setTimeout(function () {
+          API.search(searchQuery).then(function (ids) { applyFilters(ids); });
+        }, 1000);
+      }
+    };
+
+    function toggleWish(el) {
+      $(el).toggleClass('liked');
+    }
+
+    var currentQvQty = 1;
+    var currentQvMax = 1;
+    var currentQvProduct = null;
+    
+    window.changeQvQty = function(delta) {
+      currentQvQty += delta;
+      if (currentQvQty < 1) currentQvQty = 1;
+      if (currentQvQty > currentQvMax) currentQvQty = currentQvMax;
+      
+      document.getElementById('qv-qty-val').innerText = currentQvQty;
+      document.getElementById('qv-btn-minus').disabled = (currentQvQty <= 1);
+      document.getElementById('qv-btn-plus').disabled = (currentQvQty >= currentQvMax);
+    };
+    
+    window.addQvToBag = function() {
+      if (!currentQvProduct) return;
+      addToCart(currentQvProduct.id, currentQvQty);
+      
+      var actionArea = document.getElementById('qv-action-area');
+      actionArea.innerHTML = '<button class="btn secondary" style="flex:1;" onclick="document.getElementById(\'quickview\').style.display=\'none\'; openCart();">View bag</button><button class="btn" style="flex:1;" onclick="document.getElementById(\'quickview\').style.display=\'none\'">Continue shopping</button>';
+    };
+
+    function openQuickView(p) {
+      currentQvProduct = p;
+      currentQvMax = Math.min(5, p.stock);
+      currentQvQty = 1;
+      
+      var html = '<div class="qv-layout">';
+      html += '<div class="qv-image"><img src="' + p.image + '" alt="' + p.name + '"></div>';
+      html += '<div class="qv-info">';
+      html += '<div class="qv-label">Quick view</div>';
+      html += '<h2>' + p.name + '</h2>';
+      html += '<p class="qv-desc">' + p.desc + '</p>';
+      html += '<div class="qv-price">₹' + p.price.toLocaleString('en-IN') + '</div>';
+      if (p.stock == 0) {
+        html += '<p class="qv-stock" style="color:var(--error); margin-bottom: 24px; font-size: 14px; font-weight: 500;">Currently out of stock</p>';
+        html += '<div class="qv-action-area" id="qv-action-area"><button class="btn secondary" style="width: 100%" onclick="alert(\'You will be notified when this is back in stock.\')">Notify me</button></div>';
+      } else {
+        html += '<p class="qv-stock" style="color:var(--leaf); margin-bottom: 24px; font-size: 14px; font-weight: 500;">In stock (' + p.stock + ' units)</p>';
+        html += '<div class="qv-action-area" id="qv-action-area">';
+        html += '<div class="qv-qty-controls">';
+        html += '<button id="qv-btn-minus" class="qv-qty-btn" onclick="changeQvQty(-1)" disabled>-</button>';
+        html += '<span id="qv-qty-val" class="qv-qty-val">1</span>';
+        html += '<button id="qv-btn-plus" class="qv-qty-btn" onclick="changeQvQty(1)" ' + (currentQvMax <= 1 ? 'disabled' : '') + '>+</button>';
+        html += '</div>';
+        html += '<button class="btn" style="flex:1;" onclick="addQvToBag()">Add to bag</button>';
+        html += '</div>';
+      }
+      html += '</div></div>';
+      document.getElementById('qv-body').innerHTML = html;
+      document.getElementById('quickview').style.display = 'block';
+    }
+
+    function addToCart(id, qtyToAdd) {
+      qtyToAdd = qtyToAdd || 1;
+      var p = PRODUCTS.find(function (x) { return x.id == id; });
+      if (!p || p.stock == 0) return;
+      
+      var priceEl = document.getElementById('price-' + id);
+      var price = priceEl ? parseInt(priceEl.innerText.replace('₹', '').replace(/,/g, '')) : p.price;
+      
+      var existing = cart.find(function (c) { return c.id == id; });
+      var maxAllowed = Math.min(5, p.stock);
+      if (existing) {
+        if (existing.qty + qtyToAdd > maxAllowed) {
+          existing.qty = maxAllowed;
+        } else {
+          existing.qty += qtyToAdd;
+        }
+      } else {
+        cart.push({ id: p.id, name: p.name, price: price, qty: Math.min(qtyToAdd, maxAllowed) });
+      }
+      saveCart();
+      updateCount();
+      renderCart();
+    }
+
+    function saveCart() {
+      localStorage.setItem('mv_cart', JSON.stringify(cart));
+    }
+
+    function updateCount() {
+      document.getElementById('cart-count').innerText = cart.length;
+    }
+
+    function openCart() {
+      renderCart();
+      document.getElementById('cart').style.right = '0';
+    }
+
+    function closeCart() {
+      document.getElementById('cart').style.right = '';
+    }
+
+    function subtotal() {
+      var s = 0;
+      cart.forEach(function (c) {
+        var p = PRODUCTS.find(function(x) { return x.id == c.id; });
+        s += (p ? p.price : c.price) * c.qty;
+      });
+      return s;
+    }
+
+    function renderCart() {
+      var items = document.getElementById('cart-items');
+      var html = '';
+      if (cart.length === 0) {
+        html = '<div style="text-align:center; padding: 48px 0; color:var(--ink); opacity:0.6;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin-bottom:16px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg><p>Your shopping bag is empty.</p></div>';
+        document.getElementById('ship-wrapper').style.display = 'none';
+        document.getElementById('cart-footer').style.display = 'none';
+      } else {
+        document.getElementById('ship-wrapper').style.display = 'block';
+        document.getElementById('cart-footer').style.display = 'block';
+        for (var i = 0; i < cart.length; i++) {
+          var c = cart[i];
+          var p = PRODUCTS.find(function(x) { return x.id == c.id; });
+          var cat = p ? p.category : '';
+          html += '<div class="cart-line">';
+          html += '<div class="cart-item-details">';
+          html += '<div class="cart-item-cat">' + cat + '</div>';
+          html += '<div class="cart-item-name">' + c.name + '</div>';
+          html += '<div class="cart-item-price">₹' + c.price.toLocaleString('en-IN') + '</div>';
+          html += '</div>';
+          html += '<div class="cart-item-actions">';
+          html += '<div class="qty-controls">';
+          html += '<span class="minus" data-i="' + i + '">&minus;</span>';
+          html += '<span class="qty">' + c.qty + '</span>';
+          html += '<span class="plus" data-i="' + i + '">+</span>';
+          html += '</div>';
+          html += '<a href="#" class="remove" data-i="' + i + '">Remove</a>';
+          html += '</div>';
+          html += '</div>';
+        }
+      }
+      items.innerHTML = html;
+
+      items.onclick = function (e) {
+        var i = e.target.getAttribute('data-i');
+        if (e.target.className == 'plus') plus(i);
+        if (e.target.className == 'minus') minus(i);
+        if (e.target.className == 'remove') removeItem(i);
+      };
+
+      var sub = subtotal();
+      discount = 0;
+      var validCoupon = false;
+
+      if (appliedCoupon === 'WELCOME10' && sub >= 399) {
+        var eligibleTotal = 0;
+        cart.forEach(function (c) {
+          var p = PRODUCTS.find(function (x) { return x.id == c.id; });
+          if (p && p.category !== 'Gifts') {
+            eligibleTotal += p.price * c.qty;
+          }
+        });
+        discount = Math.min(150, eligibleTotal * 0.1);
+        validCoupon = true;
+      }
+
+      var amount = sub - discount;
+      var shipping = amount >= 599 ? 0 : 49;
+      if (amount >= 599) {
+        document.getElementById('ship-msg').innerHTML = '🎉 Free shipping!';
+      } else {
+        var needed = 599 - Math.max(0, amount);
+        document.getElementById('ship-msg').innerHTML = 'Add ₹' + needed + ' more for FREE shipping!';
+      }
+      document.getElementById('ship-fill').style.width = Math.min(100, Math.max(0, (amount / 599) * 100)) + '%';
+      var total = Math.round(amount + shipping);
+      
+      var totalsHtml = '<div class="cart-totals-section">';
+      totalsHtml += '<div class="totals-row"><span>Subtotal</span><span>₹' + sub.toLocaleString('en-IN') + '</span></div>';
+      totalsHtml += '<div class="totals-row"><span>Shipping</span><span>' + (shipping === 0 ? 'Free' : '₹' + shipping) + '</span></div>';
+      if (discount > 0) {
+        totalsHtml += '<div class="totals-row discount"><span>Discount</span><span>-₹' + discount.toLocaleString('en-IN') + '</span></div>';
+      }
+      totalsHtml += '<div class="totals-row final"><span>Total</span><span>₹' + total.toLocaleString('en-IN') + '</span></div>';
+      if (appliedCoupon) {
+        totalsHtml += '<div style="text-align: right; margin-top: 8px;"><a href="#" onclick="removeCoupon()" class="remove">Remove ' + appliedCoupon + '</a></div>';
+      }
+      totalsHtml += '</div>';
+      document.getElementById('totals').innerHTML = totalsHtml;
+      
+      var couponInput = document.querySelector('#checkout-form [name="coupon"]');
+      if (couponInput) {
+        couponInput.value = validCoupon ? appliedCoupon : '';
+      }
+    }
+
+    function plus(i) {
+      var p = PRODUCTS.find(function (x) { return x.id == cart[i].id; });
+      var maxQty = p ? Math.min(5, p.stock) : 5;
+      if (cart[i].qty >= maxQty) return;
+      cart[i].qty++;
+      saveCart();
+      renderCart();
+    }
+
+    function minus(i) {
+      if (cart[i].qty <= 1) return;
+      cart[i].qty--;
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(i) {
+      cart.splice(i, 1);
+      saveCart();
+      renderCart();
+      updateCount();
+    }
+
+    function applyCoupon() {
+      var code = document.getElementById('coupon').value.trim().toUpperCase();
+      if (code === 'WELCOME10') {
+        if (subtotal() < 399) {
+          alert('A minimum cart subtotal of ₹399 is required.');
+          return;
+        }
+        appliedCoupon = 'WELCOME10';
+      }
+      renderCart();
+    }
+
+    function removeCoupon() {
+      appliedCoupon = '';
+      document.getElementById('coupon').value = '';
+      renderCart();
+    }
+
+    function checkPin() {
+      var pin = document.getElementById('pin').value.trim();
+      if (!pin) {
+        document.getElementById('pin-result').innerHTML = 'Please enter a pincode.';
+        return;
+      }
+      document.getElementById('pin-result').innerHTML = 'Checking...';
+      API.checkPincode(pin).then(function (r) {
+        if (r.serviceable) {
+          document.getElementById('pin-result').innerHTML = '<i class="fa fa-check"></i> Delivery available at your location.';
+        } else {
+          document.getElementById('pin-result').innerHTML = 'Delivery unavailable at your location.';
+        }
+      }).catch(function (e) {
+        document.getElementById('pin-result').innerHTML = 'Pincode must be 6-digits pincode.';
+      });
+    }
+
+    function subscribe() {
+      var email = document.getElementById('nl-email').value;
+      if (email.indexOf('@') > -1) {
+        document.getElementById('nl-msg').innerHTML = 'Thanks ' + email + '! Check your inbox.';
+      } else {
+        alert('ERROR!!!');
+      }
+    }
+
+    function countdown() {
+      var end = new Date('2025-11-01T00:00:00').getTime();
+      setInterval(function () {
+        var diff = end - new Date().getTime();
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdown').innerHTML = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+      }, 1000);
+    }
+
+    setTimeout(function () {
+      document.getElementById('popup').style.display = 'block';
+    }, 2000);
+
+    renderProducts(PRODUCTS);
+    countdown();
+    updateCount();
+  </script>
+</body>
+
+</html>
