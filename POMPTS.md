@@ -719,3 +719,374 @@ Overall:
 
 Focus on visual refinement and consistency, not rewriting the application's functionality.
 After implementation, stop and report only the visual changes made.
+
+# 16th Prompt
+
+Redesign the product cards and Quick View to match this visual direction.
+
+Product cards:
+- Large square product imagery with consistent framing.
+- Small numbered badge on the image.
+- A subtle Quick view action appears over the product image.
+- Category label above the product name.
+- Elegant serif product name.
+- Short product description underneath.
+- Price and product action clearly visible.
+- Sold-out products have a clear but restrained sold-out badge and Notify me action.
+- Keep the layout spacious, editorial and premium with minimal card decoration.
+- Avoid generic boxed e-commerce styling.
+
+Quick View:
+- Open as a large refined modal with a two-column layout on desktop.
+- Large product image on the left.
+- Product information on the right.
+- Small “Quick view” label.
+- Real product name, description, price and stock state from PRODUCTS.
+- Clear Add to bag action.
+- Close control in the top-right.
+- On mobile, stack the image and product information naturally.
+- Make it keyboard accessible and easy to close.
+
+Use the existing assessment PRODUCTS data as the only source for product information. Do not use placeholder names such as “Tea selection 01” or placeholder descriptions.
+
+Do not invent sizes, reviews, ratings, claims or product facts.
+Do not change product IDs, prices, stock, cart logic or business rules.
+Keep Quick View functionality working.
+
+Do not add a separate product detail page.
+Do not add libraries or frameworks.
+
+Match the visual language of the reference: calm cream background, deep tea green, editorial typography, generous spacing, refined imagery and minimal interactions.
+
+After implementation, stop and report only what you changed.
+
+# 17th Prompt
+
+Refine the existing Quick View into a compact product-detail experience.
+
+Keep the current premium editorial design.
+
+Inside Quick View:
+- Show the real product image, product name, approved description and price.
+- Clearly show the available stock.
+- Add a quantity selector with minus, quantity and plus controls.
+- Let the customer choose the quantity before adding to bag.
+- Respect the existing maximum of 5 units per product and the actual stock limit.
+- Minus must stop at 1.
+- Plus must stop at the allowed maximum.
+- Add to bag should add the selected quantity in one action.
+- After adding, provide a clear “View bag” option so the customer can go directly to the cart.
+- Show an appropriate sold-out state when stock is 0.
+
+Keep all existing cart calculations, product data, stock rules and business logic unchanged. Reuse the existing cart logic rather than creating a separate quantity system.
+
+Make the quantity controls accessible, easy to understand and comfortable to use on mobile.
+
+Do not add a separate product-detail page.
+Do not invent product information.
+Do not change search, filters, sorting, coupon, pincode or checkout functionality.
+
+After implementation, stop and report only what you changed.
+
+---
+
+# 18th Prompt
+
+Redesign ONLY the newsletter section to match the premium editorial Mistvale design.
+
+Use a wide deep tea-green section.
+
+Desktop:
+- Content on the left.
+- Newsletter form on the right.
+- Left side should have a small refined eyebrow, an elegant large serif heading and a short supporting sentence.
+- Right side should have a clear “Email address” label, email input and a simple submit button.
+- Keep both sides vertically balanced.
+- Spacious, calm and premium rather than a typical centered newsletter block.
+
+Mobile:
+- Stack the content first and the email form below it.
+- Keep comfortable spacing and full-width form controls.
+- No horizontal scrolling.
+
+Keep the existing newsletter functionality, validation and success/error states.
+Keep the newsletter inline on the page and do not create a popup.
+
+Use only approved Mistvale brand content from the assessment and BRAND.md.
+Do not invent discounts, offers or promotional claims.
+Do not change any other section or business logic.
+
+After implementation, stop and report only what you changed.
+
+---
+
+# 19th Prompt
+
+Redesign ONLY the footer of the current Mistvale Tea Co. website.
+
+Make it feel like the final premium editorial section of the brand.
+
+Layout:
+- Left side: Mistvale logo and the tagline “Hill-grown tea, honestly made.”
+- Right side: a clear “Company & contact” area.
+- Show the approved company address from BRAND.md.
+- Make email, phone, website and Instagram clearly clickable.
+- Use simple inline icons where appropriate (only those provided in BRAND.md).
+- Keep the layout spacious, refined and minimal.
+- On mobile, stack the two sides cleanly.
+
+Color:
+- Use a darker shade of the existing tea-green used by the newsletter section.
+- The footer should feel slightly deeper and more grounded than the newsletter, while remaining within the Mistvale color system.
+- Use cream/light text with accessible contrast.
+
+Footer bottom:
+- Keep the approved legal text exactly unchanged.
+- Keep the copyright information.
+- Keep a subtle divider between the main footer content and the legal/copyright area.
+
+Do not invent Facebook, YouTube or any other contact/social links not provided in BRAND.md.
+Do not change any business logic, product data or other sections.
+
+Use the existing Mistvale typography, spacing and responsive design system.
+
+After implementation, stop and report only what you changed.
+
+---
+
+# 20th Prompt
+
+Redesign ONLY the cart drawer to feel like a wider premium Mistvale “Shopping bag” experience.
+
+Use the reference visual direction: spacious, editorial, warm cream background, refined typography and clear sections.
+
+Cart layout:
+- Make the cart drawer noticeably wider on desktop.
+- Use a small “YOUR SELECTION” label above a large “Shopping bag” heading.
+- Keep the close control at the top right.
+- Give each cart item a spacious horizontal layout with category, product name, price and quantity controls.
+- Keep minus, quantity and plus controls together in a clean compact control.
+- Provide a clear remove action for each item.
+- Make the free-shipping progress/message visually prominent but restrained.
+- Place the coupon section below the shipping progress.
+- Clearly separate subtotal, shipping, discount and final total.
+- Keep the Checkout button prominent and easy to use.
+- Make the empty-cart state clean and centered within the same design language.
+
+Responsive behavior:
+- On desktop, use the wider drawer as a substantial shopping-bag panel rather than a narrow sidebar.
+- On mobile, use most or all of the viewport width while keeping comfortable 16px side spacing.
+- Keep everything usable at 360px with no horizontal scrolling.
+
+Use the existing Mistvale brand colors, typography, spacing and visual language.
+
+IMPORTANT:
+- Keep all existing cart functionality and business rules unchanged.
+- Prices must continue coming from PRODUCTS.
+- Preserve quantity limits, stock limits and maximum 5 units per product.
+- Preserve coupon logic, shipping calculation, discount calculation and final-total calculation.
+- Preserve cart persistence.
+- Preserve the existing checkout form contract.
+- Do not change product data, API, search, filters or sorting.
+- Do not add libraries or frameworks.
+- Do not copy placeholder “price pending” or invented content from the reference.
+
+Only redesign the cart drawer visually and improve its presentation.
+After implementation, stop and report only what you changed.
+
+---
+
+# 21st Prompt
+
+Fix the responsive spacing of the current Mistvale Tea Co. website.
+
+When the viewport becomes narrower than the desktop layout, the main sections are getting too close to the screen edges.
+
+Add consistent responsive side spacing across the page so the content keeps comfortable breathing room at smaller widths.
+
+Apply this consistently to:
+- Shop section
+- Product grid
+- Section headings and filters
+- Delivery section
+- Reviews
+- FAQ
+- Newsletter
+- Footer
+- Other main content containers
+
+Keep the existing 1200px maximum content width on larger screens.
+
+The spacing should feel intentional and editorial:
+- Desktop: generous side spacing
+- Tablet: comfortable reduced spacing
+- Mobile: clear side padding, especially at 360px and 390px
+
+Make sure headings, controls and product cards share the same content alignment.
+
+Do not change the design, product data, business logic, cart, coupon, API, search or checkout.
+
+Do not add libraries or frameworks.
+
+After implementing, test the layout at 1280px, 1024px, 768px, 390px and 360px and make sure there is no horizontal scrolling.
+
+---
+
+# 22nd Prompt
+
+Improve the responsive typography of the current Mistvale Tea Co. website.
+
+At 600px and below, the text currently feels too small.
+
+Keep the existing desktop typography unchanged because it looks good at 768px and above.
+
+For smaller screens:
+- Keep body text comfortably readable.
+- Keep section headings visually prominent.
+- Keep product names and descriptions easy to read.
+- Keep buttons, filters, form text and navigation readable.
+- Keep small labels compact but never unnecessarily tiny.
+- Preserve the Mistvale editorial typography hierarchy.
+- Follow the brand requirement that body text remains around 16px and small text does not go below 13px.
+- Use responsive typography where appropriate rather than making every element the same size.
+
+Check the result at 600px, 480px, 430px, 390px and 360px.
+
+Do not change the layout, product data, business logic, cart, coupon, API, search, filters or checkout.
+
+Do not add libraries or frameworks.
+
+After implementing, stop and report only what you changed.
+
+
+
+
+Fix the responsive behavior of the current Mistvale Tea Co. website below 600px.
+
+Keep the existing desktop and tablet design unchanged because it already looks good at 768px and above.
+
+For smaller screens:
+
+Product collection:
+- Keep the product grid at 2 columns.
+- Do not change it to a single-column product layout.
+- Make the cards fit comfortably within the available screen width.
+- Preserve readable product names, prices and actions.
+
+Newsletter:
+- Keep the email input and Subscribe button in the same horizontal row.
+- Do not move the Subscribe button below the input.
+- Make both controls fit comfortably on small screens.
+
+Features / trust section below the hero:
+- Keep the three feature items in a 3-column layout.
+- Do not wrap them into additional rows.
+- Make each feature compact enough to fit the available width.
+- Keep the content readable and visually balanced.
+
+Footer:
+- Preserve the existing multi-column footer structure as the viewport becomes narrower.
+- Do not unnecessarily stack the footer sections vertically.
+- Make the columns compact and balanced so the content remains usable.
+- Prevent text or links from overflowing outside the viewport.
+
+For all of these sections:
+- Preserve the existing Mistvale visual design.
+- Use responsive sizing and spacing to make the existing layouts fit smaller screens.
+- No horizontal page scrolling at 600px, 480px, 430px, 390px or 360px.
+- Do not change product data, business logic, cart, coupon, API, search, filters or checkout.
+- Do not add libraries or frameworks.
+
+After implementing, test at 600px, 480px, 430px, 390px and 360px.
+Stop and report only what you changed.
+
+---
+
+# 23rd Prompt
+
+Audit ONLY the SEO and technical metadata of the current Mistvale Tea Co. website.
+
+Inspect the actual index.html and BRAND.md.
+
+Check:
+- Page title
+- Meta description
+- Canonical URL
+- One H1 and heading hierarchy
+- Open Graph metadata
+- Twitter metadata
+- Organization / OnlineStore JSON-LD
+- Product JSON-LD for the tea products
+- FAQPage JSON-LD
+- Image alt text
+- Existing structured data for accuracy
+- Any SEO-related mistakes or missing information
+
+Use only facts provided by the assessment and BRAND.md.
+Do not invent reviews, ratings, claims, company facts or product information.
+
+Do not modify index.html yet.
+Do not change PRODUCTS, API, cart, search, filters, coupon, pincode or checkout.
+
+Create/update AUDIT.md with:
+1. Issue
+2. Why it matters
+3. Current implementation
+4. Recommended fix
+
+After the audit, stop.
+
+---
+
+# 24th Prompt
+
+Update ONLY the basic SEO metadata in the <head> of the current Mistvale Tea Co. index.html.
+
+Add:
+- A unique SEO page title within the required 50–60 character range.
+- A meta description within the required 120–160 character range.
+- A canonical URL using the supplied Mistvale website URL.
+- Open Graph metadata for title, description, URL, image and website type.
+- Twitter card metadata using a large-image card.
+
+Use only facts and wording supported by BRAND.md and the assessment.
+
+Use the existing Mistvale hero image for social sharing where appropriate.
+
+Do not change the visible page design.
+Do not change the H1.
+Do not change PRODUCTS, API, cart, search, filters, coupon, pincode or checkout.
+Do not add libraries or frameworks.
+Do not add JSON-LD yet.
+
+After implementing, inspect the final <head> and report exactly which metadata tags were added or changed.
+
+---
+
+# 25th Prompt
+
+Fix the image optimization issues identified in the image audit.
+
+Use the existing images as the source assets.
+
+Requirements:
+
+- Convert the hero image and all 8 product images from PNG to WebP.
+- Keep the logo unchanged because it is already very small.
+- Resize/crop all 8 product images to the same 1:1 square aspect ratio.
+- Preserve the important product subject when cropping.
+- Optimize the hero image to be under 250 KB.
+- Optimize every product image to be under 150 KB.
+- Keep the visual quality appropriate for a premium tea e-commerce website.
+- Update the image references in index.html to use the new WebP files.
+- Remove or avoid references to the old PNG product/hero files if they are no longer needed.
+- Do not change product data, image meaning, layout, business logic, cart, API, search, filters, coupon, pincode or checkout.
+- Do not add libraries or frameworks.
+
+After implementation:
+1. Verify all 8 product images load.
+2. Verify the hero image loads.
+3. Verify all product images have the same 1:1 dimensions.
+4. Report the final dimensions and approximate file size of each optimized image.
+
+Stop after the image optimization is complete.
