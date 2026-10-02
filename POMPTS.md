@@ -1090,3 +1090,248 @@ After implementation:
 4. Report the final dimensions and approximate file size of each optimized image.
 
 Stop after the image optimization is complete.
+
+# 26th Prompt
+Optimize the existing Mistvale Tea Co. image assets to meet the assessment requirements.
+
+The images have already been generated and are currently PNG files inside the images/ directory.
+
+Requirements:
+
+1. Hero image
+- Keep the existing hero image visually unchanged.
+- Convert it from PNG to WebP.
+- Optimize it to be under 250 KB.
+- Preserve good visual quality.
+
+2. Product images
+- Optimize all 8 product images:
+  - product-101-assam-breakfast
+  - product-102-darjeeling-first-flush
+  - product-103-kashmiri-kahwa
+  - product-104-masala-chai-blend
+  - product-105-nilgiri-green-tea
+  - product-106-chamomile-tulsi
+  - product-107-hibiscus-rose-infusion
+  - product-108-tea-lovers-sampler
+- Convert them from PNG to WebP.
+- Make all 8 product images exactly 1:1 square.
+- Use consistent dimensions for all 8 product images.
+- Preserve the important product subject when cropping.
+- Optimize every product image to under 150 KB.
+- Preserve good visual quality and avoid excessive compression.
+
+3. Logo
+- Keep the existing SVG logo files as SVG.
+- Do not convert the SVG logos to PNG or WebP.
+
+4. HTML
+- Update all image references in index.html to use the new WebP files.
+- Make sure every product image still maps to the correct product ID/name.
+- Make sure the hero image still loads correctly.
+- Do not change product data.
+
+5. Cleanup
+- Do not delete the original PNG files until you have confirmed that every new WebP image loads correctly.
+- After verification, remove obsolete PNG image files if they are no longer referenced.
+
+6. Important constraints
+- Do not change PRODUCTS.
+- Do not change product IDs, names, prices or stock.
+- Do not change API.
+- Do not change cart, coupon, shipping, pincode, search, filters, sorting or checkout logic.
+- Do not change the visual design.
+- Do not add any libraries or frameworks.
+- Do not generate new images.
+
+After implementation, verify:
+- Hero image loads.
+- All 8 product images load.
+- All 8 product images have identical 1:1 dimensions.
+- Hero is below 250 KB.
+- Every product image is below 150 KB.
+- Correct image is displayed for each product.
+- No broken image references remain.
+
+Finally, report a table containing:
+filename | format | dimensions | file size
+
+Stop after the image optimization is complete.
+
+# 27th Prompt
+
+Implement the SEO requirements for the current Mistvale Tea Co. website.
+
+Use only facts and product data already provided by the assessment, BRAND.md and PRODUCTS.
+
+Add/fix the following:
+
+1. Page title
+- Create a unique SEO title of approximately 50–60 characters.
+- Include Mistvale Tea Co. and relevant tea-store context.
+- Do not use unsupported marketing claims.
+
+2. Meta description
+- Add a useful meta description of approximately 120–160 characters.
+- Describe Mistvale Tea Co. accurately.
+- Do not invent claims, awards, reviews or statistics.
+
+3. Canonical
+- Add the canonical URL using the supplied website:
+  https://mistvale.example/
+
+4. Open Graph
+Add:
+- og:title
+- og:description
+- og:url
+- og:image
+- og:type
+
+Use the existing Mistvale hero image for og:image.
+
+5. Twitter/X card
+Add:
+- twitter:card
+- twitter:title
+- twitter:description
+- twitter:image
+
+6. Heading structure
+- Keep exactly one H1.
+- Maintain a logical H1 → H2 → H3 hierarchy.
+- Do not unnecessarily rewrite visible website content.
+
+7. Image accessibility
+- Make sure meaningful product images have descriptive alt text.
+- Keep decorative images appropriately marked.
+- Do not add keyword-stuffed alt text.
+
+8. Organization / OnlineStore structured data
+Add valid JSON-LD for Mistvale Tea Co. using only the facts supplied in BRAND.md:
+- Name
+- Website
+- Logo
+- Address
+- Phone
+- Email
+- Instagram where appropriate
+
+Do not invent additional company information.
+
+9. Product structured data
+Add Product JSON-LD for all 8 products using the existing PRODUCTS data.
+
+For each product:
+- Use the existing product name.
+- Use the existing product ID/SKU where appropriate.
+- Use the existing INR price.
+- Use availability based on the existing stock.
+- Use the correct product image.
+- Do not invent ratings or reviews.
+
+Important:
+- Only include aggregate rating/review information for products that actually have rating/review data in PRODUCTS.
+- Do not add ratings, review counts or testimonials to products without supplied rating data.
+
+10. FAQ structured data
+Add valid FAQPage JSON-LD using ONLY the approved FAQ questions and answers already supplied by BRAND.md.
+
+Do not invent new FAQ content.
+
+Important constraints:
+- Do not change PRODUCTS.
+- Do not change product IDs, names, prices or stock.
+- Do not change API.
+- Do not change cart, coupon, shipping, pincode, search, filters, sorting or checkout logic.
+- Do not change the visual design.
+- Do not add libraries or frameworks.
+- Keep all CSS and JavaScript behavior unchanged.
+- Keep everything inside the existing index.html.
+
+After implementation:
+- Check that the JSON-LD is valid JSON.
+- Check that there is exactly one H1.
+- Check that all 8 products are represented correctly.
+- Check that no unsupported facts were added.
+- Check that all image paths used by SEO metadata exist.
+- Report exactly what SEO changes were made.
+
+Stop after the SEO implementation.
+
+
+# Prompts For Images -
+
+## Product 101
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Assam Breakfast Black Tea.
+Show an elegant Mistvale tea tin/package as the main subject, with a small tasteful amount of loose Assam black tea leaves beside the package.
+The tea should visually suggest a rich black tea: dark reddish-brown loose leaves with a warm copper-brown tone.
+Use the Mistvale premium editorial photography direction: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows, earthy sophisticated atmosphere.
+The package should be understated and premium, clearly labeled “Mistvale” and “Assam Breakfast Black Tea”.
+Square 1:1 ecommerce composition, consistent product scale and camera angle, generous breathing room.
+No people, hands, cups dominating the composition, fake claims, ratings, awards, badges, watermark, clutter or unrelated objects.
+
+## Product 102
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Darjeeling First Flush.
+Show an elegant Mistvale tea tin/package as the main subject, with a small tasteful amount of delicate Darjeeling tea leaves beside it.
+The tea leaves should have a fine, delicate appearance with subtle greenish-brown and warm golden tones, suggesting a refined first-flush tea without making unsupported claims.
+Use the same Mistvale collection photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows, calm earthy sophistication.
+The package should be understated and premium, clearly labeled “Mistvale” and “Darjeeling First Flush”.
+Square 1:1 ecommerce composition. Match the exact visual scale, camera angle and lighting style of the other Mistvale product images.
+No people, hands, fake awards, ratings, badges, promotional claims, watermark, clutter or unrelated objects.
+
+## Product 103
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Kashmiri Kahwa.
+Show an elegant Mistvale tea tin/package as the main subject, with a small amount of the Kashmiri Kahwa blend arranged naturally beside it.
+Visually show a delicate green tea blend with subtle dried botanical ingredients appropriate to the product, creating a refined green-and-warm-spice appearance without adding unsupported ingredients or claims.
+Use the same Mistvale premium editorial photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows, calm earthy atmosphere.
+The package should be understated and premium, clearly labeled “Mistvale” and “Kashmiri Kahwa”.
+Square 1:1 ecommerce composition with the same product scale, camera angle and visual treatment as the rest of the collection.
+No people, hands, fake claims, ratings, awards, badges, watermark or clutter.
+
+## Product 104
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Masala Chai Blend.
+Show an elegant Mistvale tea tin/package as the main subject, with a small tasteful amount of the Masala Chai blend beside it.
+The loose blend should have a rich warm appearance with dark tea leaves and subtle visible whole spices, creating a natural warm brown and earthy composition.
+Use the same Mistvale premium editorial photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows and understated luxury.
+The package should be clearly labeled “Mistvale” and “Masala Chai Blend” and should look like part of the same packaging collection as the other products.
+Square 1:1 ecommerce composition, consistent camera angle, product scale and lighting.
+No people, hands, fake health claims, ratings, awards, badges, watermark, clutter or unrelated objects.
+
+## Product 105
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Nilgiri Green Tea.
+Show an elegant Mistvale tea tin/package as the main subject, with a small amount of loose green tea leaves beside it.
+The tea leaves should have natural muted green tones and a delicate appearance.
+Use the same Mistvale premium editorial photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows and calm earthy sophistication.
+The package should be understated and premium, clearly labeled “Mistvale” and “Nilgiri Green Tea”.
+Square 1:1 ecommerce composition. Match the product scale, camera angle, background treatment and lighting of the other collection images.
+No people, hands, fake claims, ratings, awards, badges, watermark, clutter or unrelated objects.
+
+## Product 106
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Chamomile & Tulsi.
+Show an elegant Mistvale tea package/tin as the main subject, with a small tasteful amount of the herbal blend beside it.
+The blend should naturally show delicate chamomile flowers together with subtle green tulsi leaves.
+Use the same Mistvale premium editorial photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows and calm botanical atmosphere.
+The package should be understated and premium, clearly labeled “Mistvale” and “Chamomile & Tulsi”.
+Square 1:1 ecommerce composition, matching the same product scale, camera angle and visual treatment used across the collection.
+No people, hands, fake health claims, ratings, awards, badges, watermark or clutter.
+
+## Product 107
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Hibiscus Rose Infusion.
+Show an elegant Mistvale tea package/tin as the main subject, with a small tasteful amount of the Hibiscus Rose blend beside it.
+The blend should naturally show deep ruby-red hibiscus petals and subtle dried rose elements, creating a refined botanical appearance.
+Use the same Mistvale premium editorial photography style: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows and understated luxury.
+The package should be clearly labeled “Mistvale” and “Hibiscus Rose Infusion”.
+Square 1:1 ecommerce composition with exactly the same product scale, camera angle and visual treatment as the other Mistvale products.
+Do not put “Sold Out”, “Out of Stock”, ratings, awards, promotional badges or any other UI information on the image. The website will display the sold-out state separately.
+No people, hands, fake claims, watermark or clutter.
+
+## Product 108
+Create a premium ecommerce product photograph for Mistvale Tea Co. — Tea Lover’s Sampler Gift Box.
+Show an elegant Mistvale wooden or premium gift box as the main subject, containing a curated selection of small tea packages or tins representing a tea sampler.
+Include a subtle brewing guide inside or beside the box, consistent with the approved product description, but keep it understated and secondary to the gift box.
+The presentation should feel suitable for gifting: refined, warm, natural and premium without becoming overly decorative.
+Use the same Mistvale editorial photography style as the other products: warm natural window light, cream/parchment background, subtle natural wood or stone surface, soft realistic shadows and earthy sophistication.
+The gift box should clearly carry the “Mistvale” identity and “Tea Lover’s Sampler” labeling.
+Square 1:1 ecommerce composition with a consistent camera angle and visual scale matching the rest of the product collection.
+No people, hands, fake awards, ratings, promotional badges, unsupported claims, watermark or clutter.

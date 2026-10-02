@@ -299,32 +299,20 @@ This incremental process helped prevent larger AI-generated changes from introdu
 If something was unclear in the supplied materials, I made a temporary implementation decision and documented it here.
 
 
-## 6. Time Spent
+## 6. Extra Features Added
 
-- Planning / audit:
-- Bug fixing:
-- Design implementation:
-- Testing:
-- Final QA:
-- Total:
+- Added a redesigned Quick View experience with product details, quantity controls and a clear path to the shopping bag.
+- Added a more spacious editorial shopping-bag/cart drawer with improved item presentation, shipping progress, coupon area and order summary.
+- Added a responsive mobile experience across the main shopping flow, including the product collection, newsletter, feature section, navigation and footer.
 
 
-## 7. Extra Features Added
+## 7. With More Time I Would
 
-- 
-- 
-- 
+- Add recently viewed products and product recommendations while keeping them based only on the existing product data.
+- Add wishlist functionality and persistent saved items with accessible states.
+- Further optimize and audit image delivery, structured data, accessibility and performance using production-style tooling.
 
-
-## 8. With More Time I Would
-
-- 
-- 
-- 
-- 
-
-
-## 9. Final Notes
+## 8. Final Notes
 
 The implementation was completed incrementally using AI-assisted development.
 
