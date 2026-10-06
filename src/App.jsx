@@ -5,6 +5,7 @@ import Shop from './Components/Shop/Shop'
 import Delivery from './Components/Delivery/Delivery'
 import Review from './Components/Review/Review'
 import FAQ from './Components/FAQ/FAQ'
+import NewsPaper from './Components/NewsPaper/NewsPaper'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
       <Delivery />
       <Review />
       <FAQ />
+      <NewsPaper />
     </div>
   )
 }
