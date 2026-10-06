@@ -2,13 +2,13 @@ import Logo from "../Logo/Logo.jsx";
 
 function Footer() {
     return (
-        <footer className="bg-[#1f3d2b] text-[#f6f1e7]">
+        <footer className="bg-[#172d20] text-[#f6f1e7]">
             <div className="mx-auto max-w-[1200px] px-4">
                 {/* Main footer */}
                 <div className="grid gap-10 py-12 sm:grid-cols-2 md:grid-cols-3 md:gap-16 md:py-16">
                     {/* Brand */}
                     <div>
-                        <Logo variant="light" />
+                        <Logo variant="dark" />
 
                         <p className="mt-5 max-w-xs text-sm leading-6 text-[#f6f1e7]/70">
                             Hill-grown tea, honestly made.

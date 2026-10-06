@@ -6,6 +6,7 @@ import Delivery from './Components/Delivery/Delivery'
 import Review from './Components/Review/Review'
 import FAQ from './Components/FAQ/FAQ'
 import NewsPaper from './Components/NewsPaper/NewsPaper'
+import Footer from './Components/Footer/Footer'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <Review />
       <FAQ />
       <NewsPaper />
+      <Footer />
     </div>
   )
 }
