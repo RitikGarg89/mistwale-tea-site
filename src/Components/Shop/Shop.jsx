@@ -339,7 +339,7 @@ function Shop({ onQuickView, onAdd, onAddToCart }) {
                                 key={product.id}
                                 product={product}
                                 onQuickView={onQuickView}
-                                onAddToCart={onAdd}
+                                onAddToCart={handleAddToCart}
                             />
                         ))}
                     </div>
