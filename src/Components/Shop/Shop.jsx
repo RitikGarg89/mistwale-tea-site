@@ -40,17 +40,37 @@ function Shop({ onQuickView, onAdd }) {
             );
         }
 
-        // Sort
+        // Sort (Sold-out items always appear last in all sorts)
         if (sort === "price-low") {
-            result.sort((a, b) => a.price - b.price);
-        }
-
-        if (sort === "price-high") {
-            result.sort((a, b) => b.price - a.price);
-        }
-
-        if (sort === "name") {
-            result.sort((a, b) => a.name.localeCompare(b.name));
+            result.sort((a, b) => {
+                if (a.stock === 0 && b.stock > 0) return 1;
+                if (b.stock === 0 && a.stock > 0) return -1;
+                return a.price - b.price;
+            });
+        } else if (sort === "price-high") {
+            result.sort((a, b) => {
+                if (a.stock === 0 && b.stock > 0) return 1;
+                if (b.stock === 0 && a.stock > 0) return -1;
+                return b.price - a.price;
+            });
+        } else if (sort === "name-asc" || sort === "name") {
+            result.sort((a, b) => {
+                if (a.stock === 0 && b.stock > 0) return 1;
+                if (b.stock === 0 && a.stock > 0) return -1;
+                return a.name.localeCompare(b.name);
+            });
+        } else if (sort === "name-desc") {
+            result.sort((a, b) => {
+                if (a.stock === 0 && b.stock > 0) return 1;
+                if (b.stock === 0 && a.stock > 0) return -1;
+                return b.name.localeCompare(a.name);
+            });
+        } else {
+            result.sort((a, b) => {
+                if (a.stock === 0 && b.stock > 0) return 1;
+                if (b.stock === 0 && a.stock > 0) return -1;
+                return 0;
+            });
         }
 
         return result;
@@ -153,7 +173,8 @@ function Shop({ onQuickView, onAdd }) {
                                 <option value="featured">Featured</option>
                                 <option value="price-low">Price: Low to High</option>
                                 <option value="price-high">Price: High to Low</option>
-                                <option value="name">Name</option>
+                                <option value="name-asc">Name: A–Z</option>
+                                <option value="name-desc">Name: Z–A</option>
                             </select>
                         </label>
                     </div>
