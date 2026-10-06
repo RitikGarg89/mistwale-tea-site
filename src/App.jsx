@@ -4,6 +4,7 @@ import Hero from './Components/Hero/Hero'
 import Shop from './Components/Shop/Shop'
 import Delivery from './Components/Delivery/Delivery'
 import Review from './Components/Review/Review'
+import FAQ from './Components/FAQ/FAQ'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       />
       <Delivery />
       <Review />
+      <FAQ />
     </div>
   )
 }
