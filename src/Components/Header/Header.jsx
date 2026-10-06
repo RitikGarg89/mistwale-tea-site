@@ -105,6 +105,40 @@ function Header() {
                         </svg>
                     </button>
 
+                    {/* Login */}
+                    <button
+                        type="button"
+                        aria-label="Login"
+                        // onClick={handleLogin}
+                        className="inline-flex h-10 w-10 items-center justify-center gap-2 rounded-full border border-[#1f3d2b]/20 text-[#1f3d2b] transition-all duration-200 hover:border-[#1f3d2b] hover:bg-[#1f3d2b] hover:text-[#f6f1e7] sm:w-auto sm:px-4"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 shrink-0"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                            />
+                            <path
+                                d="M5 20C5 16.5 8.134 14 12 14C15.866 14 19 16.5 19 20"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+
+                        <span className="hidden text-sm font-medium sm:inline">
+                            Login
+                        </span>
+                    </button>
+
                     {/* Mobile Menu Button */}
                     <button
                         type="button"
@@ -202,6 +236,41 @@ function Header() {
                         >
                             FAQ
                         </a>
+
+                        {/* Mobile Login Button */}
+                        <div className="mt-2 border-t border-[#1f3d2b]/10 pt-3">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setMenuOpen(false);
+                                    // handleLogin();
+                                }}
+                                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#1f3d2b]/20 py-2.5 text-sm font-medium text-[#1f3d2b] transition-all duration-200 hover:border-[#1f3d2b] hover:bg-[#1f3d2b] hover:text-[#f6f1e7]"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-4 w-4 shrink-0"
+                                    aria-hidden="true"
+                                >
+                                    <circle
+                                        cx="12"
+                                        cy="8"
+                                        r="4"
+                                        stroke="currentColor"
+                                        strokeWidth="1.6"
+                                    />
+                                    <path
+                                        d="M5 20C5 16.5 8.134 14 12 14C15.866 14 19 16.5 19 20"
+                                        stroke="currentColor"
+                                        strokeWidth="1.6"
+                                        strokeLinecap="round"
+                                    />
+                                </svg>
+                                <span>Login</span>
+                            </button>
+                        </div>
 
                     </div>
                 </nav>
