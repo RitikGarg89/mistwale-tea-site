@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 
 function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <header className="sticky top-0 z-50 w-full border-b border-[#1f3d2b]/10 bg-[#f6f1e7]/95 backdrop-blur-md">
             <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -9,7 +11,7 @@ function Header() {
                 {/* Logo */}
                 <Logo />
 
-                {/* Navigation */}
+                {/* Desktop Navigation */}
                 <nav
                     aria-label="Main navigation"
                     className="hidden items-center gap-8 md:flex"
@@ -101,50 +103,109 @@ function Header() {
                                 strokeLinecap="round"
                             />
                         </svg>
-
-                        {/* Cart count */}
-                        <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#d9962b] px-1 text-[9px] font-semibold text-[#1b1b1b]">
-                            0
-                        </span>
                     </button>
 
-                    {/* Mobile menu button */}
+                    {/* Mobile Menu Button */}
                     <button
                         type="button"
-                        aria-label="Open menu"
+                        aria-label={menuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={menuOpen}
+                        onClick={() => setMenuOpen(!menuOpen)}
                         className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-[#1f3d2b] transition-colors duration-200 hover:bg-[#1f3d2b]/10 md:hidden"
                     >
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M4 7H20"
-                                stroke="currentColor"
-                                strokeWidth="1.6"
-                                strokeLinecap="round"
-                            />
+                        {menuOpen ? (
+                            /* X icon */
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M6 6L18 18"
+                                    stroke="currentColor"
+                                    strokeWidth="1.6"
+                                    strokeLinecap="round"
+                                />
 
-                            <path
-                                d="M4 12H20"
-                                stroke="currentColor"
-                                strokeWidth="1.6"
-                                strokeLinecap="round"
-                            />
+                                <path
+                                    d="M18 6L6 18"
+                                    stroke="currentColor"
+                                    strokeWidth="1.6"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+                        ) : (
+                            /* Menu icon */
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 7H20"
+                                    stroke="currentColor"
+                                    strokeWidth="1.6"
+                                    strokeLinecap="round"
+                                />
 
-                            <path
-                                d="M4 17H20"
-                                stroke="currentColor"
-                                strokeWidth="1.6"
-                                strokeLinecap="round"
-                            />
-                        </svg>
+                                <path
+                                    d="M4 12H20"
+                                    stroke="currentColor"
+                                    strokeWidth="1.6"
+                                    strokeLinecap="round"
+                                />
+
+                                <path
+                                    d="M4 17H20"
+                                    stroke="currentColor"
+                                    strokeWidth="1.6"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+                        )}
                     </button>
                 </div>
             </div>
+
+            {/* Mobile Navigation */}
+            {menuOpen && (
+                <nav
+                    aria-label="Mobile navigation"
+                    className="border-t border-[#1f3d2b]/10 bg-[#f6f1e7] px-4 py-5 md:hidden"
+                >
+                    <div className="mx-auto flex max-w-[1200px] flex-col gap-1">
+
+                        <a
+                            href="#shop"
+                            onClick={() => setMenuOpen(false)}
+                            className="rounded-lg px-3 py-3 text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:bg-[#ebe2cf] hover:text-[#4f7942]"
+                        >
+                            Shop
+                        </a>
+
+                        <a
+                            href="#story"
+                            onClick={() => setMenuOpen(false)}
+                            className="rounded-lg px-3 py-3 text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:bg-[#ebe2cf] hover:text-[#4f7942]"
+                        >
+                            Our approach
+                        </a>
+
+                        <a
+                            href="#faq"
+                            onClick={() => setMenuOpen(false)}
+                            className="rounded-lg px-3 py-3 text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:bg-[#ebe2cf] hover:text-[#4f7942]"
+                        >
+                            FAQ
+                        </a>
+
+                    </div>
+                </nav>
+            )}
         </header>
     );
 }
