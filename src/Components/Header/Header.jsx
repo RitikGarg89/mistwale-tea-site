@@ -1,43 +1,152 @@
-import React from 'react'
-import Logo from '../Logo/Logo'
+import React from "react";
+import Logo from "../Logo/Logo";
 
 function Header() {
     return (
-        <div>
-            <Logo />
-            <Logo variant='dark' />
-            <button
-                type="button"
-                onClick={onClick}
-                aria-label="Search"
-                className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-200 ${buttonColor}`}
-            >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    aria-hidden="true"
+        <header className="sticky top-0 z-50 w-full border-b border-[#1f3d2b]/10 bg-[#f6f1e7]/95 backdrop-blur-md">
+            <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+
+                {/* Logo */}
+                <Logo />
+
+                {/* Navigation */}
+                <nav
+                    aria-label="Main navigation"
+                    className="hidden items-center gap-8 md:flex"
                 >
-                    <circle
-                        cx="11"
-                        cy="11"
-                        r="6.5"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                    />
+                    <a
+                        href="#shop"
+                        className="text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:text-[#4f7942]"
+                    >
+                        Shop
+                    </a>
 
-                    <path
-                        d="M16 16L20 20"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                    />
-                </svg>
-            </button>
+                    <a
+                        href="#story"
+                        className="text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:text-[#4f7942]"
+                    >
+                        Our approach
+                    </a>
 
-        </div>
-    )
+                    <a
+                        href="#faq"
+                        className="text-sm font-medium text-[#1b1b1b] transition-colors duration-200 hover:text-[#4f7942]"
+                    >
+                        FAQ
+                    </a>
+                </nav>
+
+                {/* Actions */}
+                <div className="flex items-center gap-1 sm:gap-2">
+
+                    {/* Search */}
+                    <button
+                        type="button"
+                        aria-label="Search"
+                        className="inline-flex h-10 items-center justify-center gap-2 rounded-full px-3 text-[#1f3d2b] transition-colors duration-200 hover:bg-[#1f3d2b]/10"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 shrink-0"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="6.5"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                            />
+
+                            <path
+                                d="M16 16L20 20"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+
+                        <span className="hidden text-sm font-medium sm:inline">
+                            Search
+                        </span>
+                    </button>
+
+                    {/* Shopping Bag */}
+                    <button
+                        type="button"
+                        aria-label="Shopping bag"
+                        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-[#1f3d2b] transition-colors duration-200 hover:bg-[#1f3d2b]/10"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M5.5 8.5H18.5L17.5 20H6.5L5.5 8.5Z"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+
+                            <path
+                                d="M9 8.5V6.5C9 4.84 10.34 3.5 12 3.5C13.66 3.5 15 4.84 15 6.5V8.5"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+
+                        {/* Cart count */}
+                        <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#d9962b] px-1 text-[9px] font-semibold text-[#1b1b1b]">
+                            0
+                        </span>
+                    </button>
+
+                    {/* Mobile menu button */}
+                    <button
+                        type="button"
+                        aria-label="Open menu"
+                        className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-[#1f3d2b] transition-colors duration-200 hover:bg-[#1f3d2b]/10 md:hidden"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 7H20"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                            />
+
+                            <path
+                                d="M4 12H20"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                            />
+
+                            <path
+                                d="M4 17H20"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+    );
 }
 
-export default Header
+export default Header;
