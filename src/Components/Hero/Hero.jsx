@@ -9,7 +9,7 @@ function Hero() {
                 {/* Hero Image */}
                 <div className="absolute inset-0 -z-10">
                     <img
-                        src="/hero.webp"
+                        src="/images/hero-banner.webp"
                         alt="A quiet tea setting on a warm wooden table"
                         className="h-full w-full object-cover"
                     />
