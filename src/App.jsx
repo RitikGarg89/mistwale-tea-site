@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Components/Header/Header'
 import Hero from './Components/Hero/Hero'
 import Shop from './Components/Shop/Shop'
+import Delivery from './Components/Delivery/Delivery'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         onAddToCart={addToCart}
         onQuickView={quickView}
       />
+      <Delivery />
     </div>
   )
 }

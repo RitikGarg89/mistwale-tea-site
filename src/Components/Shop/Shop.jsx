@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
 const PRODUCTS = [
@@ -14,10 +14,49 @@ const PRODUCTS = [
 
 const categories = ["All teas", "Black", "Green", "Herbal", "Gifts"];
 
-function Shop({ onQuickView, onAdd }) {
+const sortOptions = [
+    { value: "featured", label: "Featured" },
+    { value: "price-low", label: "Price: Low to High" },
+    { value: "price-high", label: "Price: High to Low" },
+    { value: "name-asc", label: "Name: A–Z" },
+    { value: "name-desc", label: "Name: Z–A" },
+];
+
+function Shop({ onQuickView, onAdd, onAddToCart }) {
+    const handleAddToCart = onAddToCart || onAdd;
     const [category, setCategory] = useState("All teas");
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState("featured");
+    const [sortOpen, setSortOpen] = useState(false);
+    const sortRef = useRef(null);
+
+    // Close sort dropdown when clicking outside or pressing Escape
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (sortRef.current && !sortRef.current.contains(event.target)) {
+                setSortOpen(false);
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Escape") {
+                setSortOpen(false);
+            }
+        }
+
+        if (sortOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+            document.addEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [sortOpen]);
+
+    const currentSortLabel =
+        sortOptions.find((opt) => opt.value === sort)?.label || "Featured";
 
     const filteredProducts = useMemo(() => {
         let result = [...PRODUCTS];
@@ -160,23 +199,114 @@ function Shop({ onQuickView, onAdd }) {
                             })}
                         </div>
 
-                        {/* Sort */}
-                        <label className="flex shrink-0 items-center gap-2 text-sm text-[#1b1b1b]/65">
-                            <span>Sort by</span>
-
-                            <select
-                                value={sort}
-                                onChange={(e) => setSort(e.target.value)}
-                                aria-label="Sort products"
-                                className="min-h-11 rounded-full border border-[#1f3d2b]/20 bg-transparent px-4 text-sm font-medium text-[#1f3d2b] outline-none"
+                        {/* Custom Sort Dropdown */}
+                        <div className="relative shrink-0" ref={sortRef}>
+                            <button
+                                type="button"
+                                id="sort-menu-button"
+                                aria-haspopup="listbox"
+                                aria-expanded={sortOpen}
+                                aria-label={`Sort products. Currently sorted by ${currentSortLabel}`}
+                                onClick={() => setSortOpen(!sortOpen)}
+                                className={`group flex min-h-11 items-center gap-2.5 rounded-full border bg-[#f6f1e7] px-4 py-2 text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1f3d2b] focus-visible:ring-offset-2 ${
+                                    sortOpen
+                                        ? "border-[#1f3d2b] ring-2 ring-[#1f3d2b]/15"
+                                        : "border-[#1f3d2b]/20 hover:border-[#1f3d2b]/40 hover:bg-[#ebe2cf]/50"
+                                }`}
                             >
-                                <option value="featured">Featured</option>
-                                <option value="price-low">Price: Low to High</option>
-                                <option value="price-high">Price: High to Low</option>
-                                <option value="name-asc">Name: A–Z</option>
-                                <option value="name-desc">Name: Z–A</option>
-                            </select>
-                        </label>
+                                {/* Filter / Sort Icon */}
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    className="h-4 w-4 text-[#4f7942] transition-colors duration-200 group-hover:text-[#1f3d2b]"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M3 6H21M7 12H17M10 18H14"
+                                        stroke="currentColor"
+                                        strokeWidth="1.8"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+
+                                <span className="text-xs uppercase tracking-wider text-[#1b1b1b]/55 font-medium">
+                                    Sort:
+                                </span>
+
+                                <span className="font-semibold text-[#1f3d2b]">
+                                    {currentSortLabel}
+                                </span>
+
+                                {/* Chevron icon */}
+                                <svg
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    className={`ml-0.5 h-4 w-4 text-[#1f3d2b]/60 transition-transform duration-200 ${
+                                        sortOpen ? "rotate-180 text-[#1f3d2b]" : ""
+                                    }`}
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </button>
+
+                            {/* Dropdown Popover */}
+                            {sortOpen && (
+                                <div
+                                    role="listbox"
+                                    aria-label="Sort options"
+                                    className="absolute right-0 top-full z-40 mt-2 w-56 origin-top-right rounded-2xl border border-[#1f3d2b]/15 bg-[#f6f1e7] p-1.5 shadow-xl ring-1 ring-black/5"
+                                >
+                                    <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#1b1b1b]/45">
+                                        Sort by
+                                    </div>
+
+                                    {sortOptions.map((option) => {
+                                        const isSelected = sort === option.value;
+
+                                        return (
+                                            <button
+                                                key={option.value}
+                                                type="button"
+                                                role="option"
+                                                aria-selected={isSelected}
+                                                onClick={() => {
+                                                    setSort(option.value);
+                                                    setSortOpen(false);
+                                                }}
+                                                className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-left text-sm font-medium transition-colors duration-150 ${
+                                                    isSelected
+                                                        ? "bg-[#1f3d2b] text-[#f6f1e7]"
+                                                        : "text-[#1b1b1b] hover:bg-[#ebe2cf] hover:text-[#1f3d2b]"
+                                                }`}
+                                            >
+                                                <span>{option.label}</span>
+
+                                                {isSelected && (
+                                                    <svg
+                                                        viewBox="0 0 20 20"
+                                                        fill="currentColor"
+                                                        className="h-4 w-4 shrink-0 text-[#f6f1e7]"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                )}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
 
