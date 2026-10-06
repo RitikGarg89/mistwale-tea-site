@@ -3,6 +3,7 @@ import Header from './Components/Header/Header'
 import Hero from './Components/Hero/Hero'
 import Shop from './Components/Shop/Shop'
 import Delivery from './Components/Delivery/Delivery'
+import Review from './Components/Review/Review'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         onQuickView={quickView}
       />
       <Delivery />
+      <Review />
     </div>
   )
 }
